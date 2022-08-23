@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Accordion, Button, Form } from "react-bootstrap";
+import { Accordion, Button, Container, Form } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 
@@ -60,68 +60,70 @@ const Home: NextPage = () => {
   return (
     <div>
       <h1 className="text-center">Cactus API - Keychain Memory</h1>
-      <Accordion>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>Create Key Value Pair</Accordion.Header>
-          <Accordion.Body>
-            <Form onSubmit={handleCreateKVP}>
-              <Form.Group controlId="formKey">
-                <Form.Label>Key</Form.Label>
-                <Form.Control
-                  type="type"
-                  onChange={(e) => setKey(e.target.value)}
-                  value={key}
-                  placeholder="Enter a key"
-                ></Form.Control>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Value</Form.Label>
+      <Container>
+        <Accordion>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Create Key Value Pair</Accordion.Header>
+            <Accordion.Body>
+              <Form onSubmit={handleCreateKVP}>
+                <Form.Group controlId="formKey">
+                  <Form.Label>Key</Form.Label>
+                  <Form.Control
+                    type="type"
+                    onChange={(e) => setKey(e.target.value)}
+                    value={key}
+                    placeholder="Enter a key"
+                  ></Form.Control>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Value</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter a value"
+                    onChange={(e) => setValue(e.target.value)}
+                    value={value}
+                  ></Form.Control>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+            <Accordion.Header>Get Key Value Pair</Accordion.Header>
+            <Accordion.Body>
+              <Form onSubmit={handleRetrieveValue}>
                 <Form.Control
                   type="text"
-                  placeholder="Enter a value"
-                  onChange={(e) => setValue(e.target.value)}
-                  value={value}
+                  placeholder="Enter a key"
+                  onChange={(e) => setFetchKey(e.target.value)}
+                  value={fetchKey}
                 ></Form.Control>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="2">
-          <Accordion.Header>Get Key Value Pair</Accordion.Header>
-          <Accordion.Body>
-            <Form onSubmit={handleRetrieveValue}>
-              <Form.Control
-                type="text"
-                placeholder="Enter a key"
-                onChange={(e) => setFetchKey(e.target.value)}
-                value={fetchKey}
-              ></Form.Control>
-              <Button type="submit">Submit</Button>
-            </Form>
-            <div>
-              value:
-              <p>{retrievedValue}</p>
-            </div>
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="3">
-          <Accordion.Header>Delete Key Value Pair</Accordion.Header>
-          <Accordion.Body>
-            <Form onSubmit={handleDeleteKvp}>
-              <Form.Control
-                type="text"
-                placeholder="Enter a key"
-                onChange={(e) => setDeleteKey(e.target.value)}
-                value={deleteKey}
-              ></Form.Control>
-              <Button type="submit">Submit</Button>
-            </Form>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+                <Button type="submit">Submit</Button>
+              </Form>
+              <div>
+                value:
+                <p>{retrievedValue}</p>
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="3">
+            <Accordion.Header>Delete Key Value Pair</Accordion.Header>
+            <Accordion.Body>
+              <Form onSubmit={handleDeleteKvp}>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter a key"
+                  onChange={(e) => setDeleteKey(e.target.value)}
+                  value={deleteKey}
+                ></Form.Control>
+                <Button type="submit">Submit</Button>
+              </Form>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </Container>
     </div>
   );
 };
