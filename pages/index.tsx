@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
 import { Accordion, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
@@ -59,8 +58,8 @@ const Home: NextPage = () => {
     deleteKvp();
   };
   return (
-    <div className={styles.container}>
-      <h1>Cactus API - Keychain Memory</h1>
+    <div>
+      <h1 className="text-center">Cactus API - Keychain Memory</h1>
       <Accordion>
         <Accordion.Item eventKey="1">
           <Accordion.Header>Create Key Value Pair</Accordion.Header>
